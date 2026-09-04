@@ -1,0 +1,97 @@
+======================================================================
+🚀 BẮT ĐẦU QUÁ TRÌNH HUẤN LUYỆN MÔ HÌNH MLP GESTURE
+======================================================================
+
+[BƯỚC 1] ĐANG TẢI DỮ LIỆU...
+  + Kích thước X (Features): (3000, 63)
+  + Kích thước Y (Labels)  : (3000,)
+  + Kích thước Z (Classes) : (10,) -> Danh sách: ['left_one', 'left_two', 'right_fist', 'right_five', 'right_four', 'right_like', 'right_ok', 'right_one', 'right_three', 'right_two']
+
+[BƯỚC 2] ĐANG PHÂN CHIA TẬP DỮ LIỆU (Train/Val/Test)...
+  + Tập Train (Huấn luyện):  2400 mẫu
+  + Tập Valid (Tinh chỉnh):   300 mẫu
+  + Tập Test  (Đánh giá)  :   300 mẫu
+  + Phân bổ số mẫu/lớp   : [300 300 300 300 300 300 300 300 300 300]
+
+[BƯỚC 3] KIẾN TRÚC MÔ HÌNH MLP:
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ dense (Dense)                        │ (None, 128)                 │           8,192 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization                  │ (None, 128)                 │             512 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu (ReLU)                         │ (None, 128)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 128)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 64)                  │           8,256 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_1                │ (None, 64)                  │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ re_lu_1 (ReLU)                       │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 10)                  │             650 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ softmax (Softmax)                    │ (None, 10)                  │               0 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 17,866 (69.79 KB)
+ Trainable params: 17,482 (68.29 KB)
+ Non-trainable params: 384 (1.50 KB)
+
+[BƯỚC 4] BẮT ĐẦU TRAIN MÔ HÌNH...
+
+Epoch 81: early stopping
+Restoring model weights from the end of the best epoch: 66.
+>> Đã lưu biểu đồ huấn luyện tại: Training_History.png
+
+======================================================================
+🎯 [BƯỚC 5] KẾT QUẢ ĐÁNH GIÁ TRÊN TẬP TEST
+======================================================================
+  > Test Loss     : 0.0259
+  > Test Accuracy : 0.9900 (99.00%)
+
+--- BÁO CÁO PHÂN LOẠI (CLASSIFICATION REPORT) ---
+              precision    recall  f1-score   support
+
+    left_one     1.0000    1.0000    1.0000        30
+    left_two     1.0000    0.9667    0.9831        30
+  right_fist     1.0000    0.9667    0.9831        30
+  right_five     0.9677    1.0000    0.9836        30
+  right_four     1.0000    1.0000    1.0000        30
+  right_like     0.9677    1.0000    0.9836        30
+    right_ok     1.0000    0.9667    0.9831        30
+   right_one     1.0000    1.0000    1.0000        30
+ right_three     0.9677    1.0000    0.9836        30
+   right_two     1.0000    1.0000    1.0000        30
+
+    accuracy                         0.9900       300
+   macro avg     0.9903    0.9900    0.9900       300
+weighted avg     0.9903    0.9900    0.9900       300
+
+
+--- MA TRẬN NHẦM LẪN (CONFUSION MATRIX) ---
+Thực tế (hàng) x Dự đoán (cột):
+[[30  0  0  0  0  0  0  0  0  0]
+ [ 0 29  0  0  0  0  0  0  1  0]
+ [ 0  0 29  0  0  1  0  0  0  0]
+ [ 0  0  0 30  0  0  0  0  0  0]
+ [ 0  0  0  0 30  0  0  0  0  0]
+ [ 0  0  0  0  0 30  0  0  0  0]
+ [ 0  0  0  1  0  0 29  0  0  0]
+ [ 0  0  0  0  0  0  0 30  0  0]
+ [ 0  0  0  0  0  0  0  0 30  0]
+ [ 0  0  0  0  0  0  0  0  0 30]]
+
+======================================================================
+💾 [BƯỚC 6] HOÀN TẤT VÀ LƯU TRỮ
+======================================================================
+  [+] Model cuối cùng : 3_Train_Model/Output_Gestures\Gestures_MLP_Model.keras
+  [+] Model tốt nhất  : 3_Train_Model/Output_Gestures\Gestures_MLP_Best.keras
+  [+] File Log CSV    : 3_Train_Model/Output_Gestures\Gestures_Train_Log.csv

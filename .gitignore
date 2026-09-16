@@ -15,8 +15,9 @@ venv/
 
 *.tmp
 
-Dataset
 Dataset_Kaggle
+
+*.wav
 
 Output_npy
 

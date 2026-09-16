@@ -95,3 +95,13 @@ GestureVoice-Desktop-Controller/
 ```
 
 Tài liệu kiến trúc và cách kiểm thử nằm trong [Docs](Docs/README.md).
+
+## Tác giả / Author
+- Tên: **Nguyễn Ngọc Chiến.** 
+- Mã sinh viên: **B23DCVT061**
+- Sinh viên: **Học viện Công Nghệ Bưu Chính Viễn Thông.**
+
+Nếu bạn có bất kỳ câu hỏi nào hoặc thấy dự án này hữu ích, đừng ngần ngại mở một Issue hoặc cho repo một ⭐ nhé!
+
+## License
+Dự án này được phân phối dưới giấy phép MIT. Xem file [LICENSE](LICENSE) để biết thêm chi tiết.

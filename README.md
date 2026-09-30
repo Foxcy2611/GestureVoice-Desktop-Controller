@@ -23,7 +23,7 @@ Gesture chọn `mode` và `target`; KWS chỉ chọn một trong bốn action
 
 Xem nội dung Video sau để hiểu rõ nhé:
 
-<video src="./video/GestureVoice-Desktop-Controller.mp4" controls width="100%"></video>
+<video src="https://github.com/user-attachments/assets/3fe462c0-f1a1-43a2-9bfb-58be0d6b0bc1" controls width="100%"></video>
 
 ## Các Phase thực hiện
 

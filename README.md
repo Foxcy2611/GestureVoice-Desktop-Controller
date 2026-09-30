@@ -21,7 +21,11 @@ flowchart LR
 Gesture chọn `mode` và `target`; KWS chỉ chọn một trong bốn action
 `ON/OFF/UP/DOWN`. Lớp `background` chỉ chặn nhiễu, không phải command.
 
-## Các Phase
+Xem nội dung Video sau để hiểu rõ nhé:
+
+<video src="./video/GestureVoice-Desktop-Controller.mp4" controls width="100%"></video>
+
+## Các Phase thực hiện
 
 | Phase | Nội dung | Trạng thái |
 | --- | --- | --- |
